@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mr. Karaoke Houston Clone</title>
+  <style>
+    /* 1. LAYOUT RESET & BRANDING GUIDE */
+    body {
+      background-color: #0b0b0f; /* Deep obsidian black tone */
+      color: #f4f4f5;
+      font-family: system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    /* 2. NAVIGATION TOP BAR Layout */
+    nav {
+      background-color: rgba(11, 11, 15, 0.8);
+      backdrop-filter: blur(12px);
+      border-b: 1px solid #1c1c24;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+    .nav-links a {
+      color: #a1a1aa;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #ffffff; }
+    
+    .phone-btn {
+      background-color: #ef4444; /* Vivid operational red accent */
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    /* 3. HERO OVERLAY ACCENT */
+    .hero-section {
+      text-align: center;
+      padding: 100px 24px;
+      background: radial-gradient(circle at center, rgba(239, 68, 68, 0.08) 0%, transparent 60%);
+      border-bottom: 1px solid #1c1c24;
+    }
+    .hero-section h1 {
+      font-size: 48px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      margin: 0 0 20px 0;
+    }
+    .red-text { color: #ef4444; }
+    .sub-head {
+      color: #a1a1aa;
+      font-size: 18px;
+      margin-bottom: 40px;
+    }
+
+    /* 4. BUTTON CORE INTERACTION INTERFACES */
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+    .primary-btn {
+      background-color: #ef4444;
+      color: white;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+    .secondary-btn {
+      background-color: transparent;
+      color: #ef4444;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 800;
+      border: 1px solid #ef4444;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+
+    /* 5. SPLIT REVENUE MARKETING SECTION */
+    .split-section {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .split-title {
+      font-size: 36px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .showcase-box {
+      background-color: #12121a;
+      border: 1px solid #1c1c24;
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .red-badge-icon {
+      background-color: rgba(239, 68, 68, 0.1);
+      color: #ef4444;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    /* 6. ADVANTAGES SYSTEM GRID FLOOR */
+    .features-grid {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background-color: #12121a;
+      border: 1px solid #1c1c24;
+      padding: 32px;
+      border-radius: 16px;
+      text-align: left;
+    }
+    .feature-card h3 {
+      font-size: 20px;
+      font-weight: 800;
+      margin: 16px 0 12px 0;
+    }
+    .feature-card p {
+      color: #a1a1aa;
+      font-size: 15px;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* 7. LIVE TRACK SELECTION COMPONENT GRID */
+    .data-hub-section {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    /* FOOTER AREA RULES */
+    footer {
+      border-top: 1px solid #1c1c24;
+      padding: 60px 24px;
+      background-color: #08080c;
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      color: #71717a;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP NAV BRANDING BAR -->
+  <nav>
+    <div class="nav-container">
+      <div style="font-weight:900; font-size:18px; text-transform:uppercase; letter-spacing:1px;">
+        Mr. Karaoke <span class="red-text">Houston</span>
+      </div>
+      <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Schedule</a>
+        <a href="#">Song List</a>
+        <a href="#">Contact</a>
+      </div>
+      <a href="tel:7136894210" class="phone-btn">713-689-4210</a>
+    </div>
+  </nav>
+
+  <!-- IMPACT HERO COMPONENT BLOCK -->
+  <section class="hero-section">
+    <h1>
+      Koert Knights DBA Mr Karaoke Houston's Full-Time<br>
+      <span class="red-text">Professional Karaoke Host</span>
+    </h1>
+    <div class="sub-head">18 Years of Experience • 5–7 Nights Weekly • Limited Availability</div>
+    <div class="btn-group">
+      <button class="primary-btn">Get Started</button>
+      <button class="secondary-btn">Book a Consultation</button>
+    </div>
+  </section>
+
+  <!-- SPLIT SECTION: REVENUE DRIVERS -->
+  <section class="split-section">
+    <div>
+      <h2 class="split-title">Turn Slow Nights<br>Into <span class="red-text">Packed Nights</span></h2>
+      <p style="color:#a1a1aa; font-size:16px; line-height:1.6;">This isn't just karaoke entertainment — it's a full experience that fills bars and increases venue revenue metrics consistently.</p>
+    </div>
+    <div>
+      <div class="showcase-box">
+        <div class="red-badge-icon">✓</div>
+        <div>
+          <h4 style="margin:0 0 4px 0; font-size:16px;">Brings Consistent Crowds</h4>
+          <p style="margin:0; color:#a1a1aa; font-size:14px;">A loyal following of singers who show up every week.</p>
+        </div>
+      </div>
+      <div class="showcase-box">
+        <div class="red-badge-icon">✓</div>
+        <div>
+          <h4 style="margin:0 0 4px 0; font-size:16px;">Increases Bar Revenue</h4>
+          <p style="margin:0; color:#a1a1aa; font-size:14px;">More customers, more drinks, more net operational profit points.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE SYSTEM DATA ROW NODES -->
+  <section class="data-hub-section">
+    <!-- GRID PORTION A: ITINERARY CALENDAR -->
+    <div class="feature-card" style="background:#12121a;">
+      <h3 class="red-text" style="margin-top:0;">Live Rotating Gig Calendar</h3>
+      <div id="scheduleGrid" style="display:flex; flex-direction:column; gap:12px; margin-top:20px;"></div>
+    </div>
+
+    <!-- GRID PORTION B: TRACK FILTER SEARCH ENGINE -->
+    <div class="feature-card" style="background:#12121a;">
+      <h3 class="red-text" style="margin-top:0;">Search Database Catalog</h3>
+      <input type="text" id="songSearchBar" placeholder="Type artist name or performance track title..." style="width:100%; padding:12px; background:#0b0b0f; border:1px solid #1c1c24; border-radius:8px; color:white; margin-top:16px; box-sizing:border-box; outline:none;">
+      <div id="songResultsBody" style="max-height:200px; overflow-y:auto; margin-top:16px; font-size:14px;"></div>
+    </div>
+  </section>
+
+  <!-- LIVE FOOTER ELEMENT CONTAINER -->
+  <footer>
+    <div class="footer-content">
+      <div>Since 2007 — Licensed and Insured | Houston's Premier Entertainment</div>
+      <div>Terms of Service | Privacy Policy</div>
+    </div>
+  </footer>
+
+  <!-- DATABASE COMMUNICATION INTEGRATION HOOKS -->
+  <script>
+    // Live Show Calendar Pipeline
+    async function loadLiveSchedule() {
+      try {
+        const res = await fetch('http://localhost:5000/api/schedule');
+        const list = await res.json();
+        document.getElementById('scheduleGrid').innerHTML = list.map(s => `
+          <div style="background:#0b0b0f; padding:14px; border-radius:8px; border-left: 3px solid #ef4444; display:flex; justify-content:space-between;">
+            <strong>${s.day}s</strong>
+            <span style="color:#a1a1aa;">${s.venue}</span>
+          </div>
+        `).join('');
+      } catch(e) {}
+    }
+
+    // Dynamic Live Catalogue Query Event
+    const searchBar = document.getElementById('songSearchBar');
+    searchBar.addEventListener('keyup', async () => {
+      try {
+        const res = await fetch(`http://localhost:5000/api/songs?q=${encodeURIComponent(searchBar.value)}`);
+        const songs = await res.json();
+        document.getElementById('songResultsBody').innerHTML = songs.map(s => `
+          <div style="padding:10px 0; border-bottom:1px solid #1c1c24; display:flex; justify-content:space-between;">
+            <span style="color:white; font-weight:bold;">${s.title}</span>
+            <span style="color:#71717a;">${s.artist}</span>
+          </div>
+        `).join('');
+      } catch(e) {}
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadLiveSchedule();
+      searchBar.dispatchEvent(new Event('keyup'));
+    });
+  </script>
+</body>
+</html>

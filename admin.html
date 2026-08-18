@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mr. Karaoke Houston - Management Console</title>
+  <style>
+    body { background-color: #050508; color: #f4f4f5; font-family: system-ui, sans-serif; padding: 40px 24px; margin: 0; }
+    .wrapper { max-width: 1000px; margin: 0 auto; }
+    h1 { color: #ef4444; text-transform: uppercase; font-size: 26px; margin-bottom: 32px; border-bottom: 1px solid #14141f; padding-bottom: 12px; font-weight: 900; }
+    h2 { color: #ffffff; font-size: 18px; margin-top: 0; margin-bottom: 16px; text-transform: uppercase; font-weight: 800; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 32px; margin-bottom: 40px; }
+    .panel { background-color: #0f0f17; border: 1px solid #1c1c2b; padding: 24px; border-radius: 16px; }
+    .form-group { margin-bottom: 14px; text-align: left; }
+    label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #71717a; margin-bottom: 6px; letter-spacing: 1px; }
+    input { width: 100%; padding: 12px; background-color: #050508; border: 1px solid #1c1c2b; border-radius: 8px; color: #ffffff; box-sizing: border-box; outline: none; }
+    input:focus { border-color: #ef4444; }
+    button { background-color: #ef4444; color: #ffffff; font-weight: 800; padding: 12px 16px; border: none; border-radius: 8px; cursor: pointer; text-transform: uppercase; font-size: 12px; width: 100%; letter-spacing: 0.5px; transition: opacity 0.2s; }
+    button:hover { opacity: 0.9; }
+    .item-list { margin-top: 20px; max-height: 240px; overflow-y: auto; border-top: 1px solid #14141f; padding-top: 12px; }
+    .item-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid #14141f; font-size: 14px; }
+    .delete-btn { background-color: transparent; color: #ef4444; border: 1px solid #ef4444; width: auto; padding: 4px 8px; font-size: 11px; border-radius: 6px; font-weight: bold; }
+    .delete-btn:hover { background-color: #ef4444; color: #ffffff; }
+  </style>
+</head>
+<body>
+
+  <div class="wrapper">
+    <h1>System Dashboard & Content Engine</h1>
+
+    <div class="grid-2">
+      <!-- LEFT HAND PANEL: INCOMING LEADS DOCK -->
+      <div class="panel">
+        <h2>Consultation Inquiries</h2>
+        <div class="item-list" id="leadsContainer">Loading leads...</div>
+      </div>
+
+      <!-- RIGHT HAND PANEL: GIG CALENDAR MANAGEMENT FORMS -->
+      <div class="panel">
+        <h2>Manage Show Schedule</h2>
+        <div class="form-group">
+          <label>Day of the Week</label>
+          <input type="text" id="schedDay" placeholder="e.g., Thursday">
+        </div>
+        <div class="form-group">
+          <label>Venue Name</label>
+          <input type="text" id="schedVenue" placeholder="e.g., Sundown Saloon">
+        </div>
+        <button id="addShowBtn">Publish Show</button>
+        <div class="item-list" id="scheduleAdminList">Loading schedule...</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_URL = 'http://localhost:5000/api';
+
+    // 1. Load and Map Leads Log Sheet Table
+    async function getLeads() {
+      try {
+        const res = await fetch(`${API_URL}/leads`);
+        const data = await res.json();
+        const container = document.getElementById('leadsContainer');
+        if(data.length === 0) return container.innerHTML = '<p style="color:#71717a; font-size:14px;">No requests yet.</p>';
+        
+        container.innerHTML = data.map(lead => `
+          <div class="item-row">
+            <span><strong style="color:#fff;">${lead.venueName}</strong></span>
+            <span style="color:#71717a; font-size:12px;">${new Date(lead.dateSubmitted).toLocaleDateString()}</span>
+          </div>
+        `).join('');
+      } catch(e) { document.getElementById('leadsContainer').innerHTML = "Connection failure."; }
+    }
+
+    // 2. Load and Map Active Gigs with Delete Buttons
+    async function getSchedule() {
+      try {
+        const res = await fetch(`${API_URL}/schedule`);
+        const data = await res.json();
+        const list = document.getElementById('scheduleAdminList');
+        if(data.length === 0) return list.innerHTML = '<p style="color:#71717a; font-size:14px;">No gigs published yet.</p>';
+        
+        list.innerHTML = data.map(show => `
+          <div class="item-row">
+            <span><strong style="color:#ef4444;">${show.day}s:</strong> <span style="color:#fff;">${show.venue}</span></span>
+            <button class="delete-btn" onclick="deleteShow('${show._id}')">Remove</button>
+          </div>
+        `).join('');
+      } catch(e) { document.getElementById('scheduleAdminList').innerHTML = "Connection failure."; }
+    }
+
+        // Ensure the ID exactly matches your HTML button "addShowBtn"
+    document.getElementById('addShowBtn').addEventListener('click', async () => {
+      const day = document.getElementById('schedDay').value;
+      const venue = document.getElementById('schedVenue').value;
+      
+      if(!day || !venue) return alert("Please fill out both form input boxes.");
+
+      try {
+        const res = await fetch(`${API_URL}/schedule`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ day: day, venue: venue }) // double check formatting
+        });
+        
+        if (res.ok) {
+          document.getElementById('schedDay').value = '';
+          document.getElementById('schedVenue').value = '';
+          getSchedule(); // This updates the list on your screen instantly!
+        }
+      } catch (err) { alert("Failed to save show to server data streams."); }
+    });
+
+
+    // 4. Delete Trigger: Wipe out a Specific Document Node
+    async function deleteShow(id) {
+      if(!confirm("Permanently erase this gig slot from the live database?")) return;
+      try {
+        const res = await fetch(`${API_URL}/schedule/${id}`, { method: 'DELETE' });
+        if (res.ok) getSchedule();
+      } catch(e) { alert("Failed to clear element."); }
+    }
+
+    // Initialization
+    window.addEventListener('DOMContentLoaded', () => {
+      getLeads();
+      getSchedule();
+    });
+  </script>
+</body>
+</html>

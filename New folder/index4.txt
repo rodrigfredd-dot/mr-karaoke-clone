@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mr. Karaoke Houston Clone</title>
+  <style>
+    body { background-color:#050508; color:#f4f4f5; font-family:system-ui,-apple-system,sans-serif; margin:0; padding:0; box-sizing:border-box; }
+    nav { background-color:rgba(5,5,8,0.85); backdrop-filter:blur(12px); border-bottom:1px solid #14141f; position:sticky; top:0; z-index:100; }
+    .nav-container { max-width:1200px; margin:0 auto; padding:20px 24px; display:flex; justify-content:space-between; align-items:center; }
+    .nav-links a { color:#a1a1aa; text-decoration:none; font-size:14px; font-weight:500; margin:0 16px; }
+    .phone-btn { background-color:#ef4444; color:#fff; padding:10px 22px; border-radius:9999px; text-decoration:none; font-weight:800; font-size:14px; }
+    .hero-section { text-align:center; padding:120px 24px; background:radial-gradient(circle at center, rgba(239,68,68,0.07) 0%, transparent 60%); border-bottom:1px solid #14141f; }
+    .hero-section h1 { font-size:44px; font-weight:900; text-transform:uppercase; line-height:1.15; margin:0 0 20px 0; }
+    .red-text { color:#ef4444; }
+    .sub-head { color:#a1a1aa; font-size:16px; margin-bottom:40px; }
+    .btn-group { display:flex; justify-content:center; gap:16px; }
+    .primary-btn { background-color:#ef4444; color:#fff; padding:16px 32px; border-radius:8px; font-weight:800; border:none; cursor:pointer; text-transform:uppercase; font-size:13px; }
+    .secondary-btn { background-color:transparent; color:#ef4444; padding:16px 32px; border-radius:8px; font-weight:800; border:1px solid #ef4444; cursor:pointer; text-transform:uppercase; font-size:13px; }
+    .section-container { max-width:1200px; margin:100px auto; padding:0 24px; }
+    .split-2 { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+    .grid-3 { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:24px; margin-top:40px; }
+    .section-title { font-size:36px; font-weight:900; text-transform:uppercase; margin:0 0 24px 0; line-height:1.1; }
+    .panel-card { background-color:#0f0f17; border:1px solid #1c1c2b; border-radius:16px; padding:32px; }
+    .panel-card h3 { font-size:22px; font-weight:800; margin:0 0 12px 0; }
+    .panel-card p { color:#a1a1aa; font-size:15px; line-height:1.6; margin:0; }
+    .showcase-item { background-color:#0f0f17; border:1px solid #1c1c2b; border-radius:12px; padding:20px; display:flex; align-items:start; gap:16px; margin-bottom:16px; }
+    .check-icon { background-color:rgba(239,68,68,0.1); color:#ef4444; padding:6px 10px; border-radius:6px; font-weight:bold; font-size:14px; }
+    .media-box { border-radius:16px; overflow:hidden; border:1px solid #1c1c2b; display:flex; }
+    .media-box img { width:100%; height:auto; object-fit:cover; }
+    .form-console { max-width:500px; margin:60px auto 0 auto; }
+    label { display:block; font-size:11px; font-weight:700; text-transform:uppercase; color:#52525b; margin-bottom:6px; }
+    input { width:100%; padding:14px; background-color:#050508; border:1px solid #1c1c2b; border-radius:8px; color:#fff; margin-bottom:20px; box-sizing:border-box; outline:none; }
+    input:focus { border-color:#ef4444; }
+    footer { border-top:1px solid #14141f; padding:50px 24px; background-color:#030305; margin-top:120px; }
+    .footer-inner { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; color:#52525b; font-size:13px; }
+    @media (max-width:768px) { .split-2 { grid-template-columns:1fr; gap:40px; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-container">
+      <div style="font-weight:900; font-size:18px; text-transform:uppercase;">Mr. Karaoke <span class="red-text">Houston</span></div>
+      <div class="nav-links"><a href="#">Home</a><a href="#">Schedule</a><a href="#">Song List</a><a href="#">Contact</a></div>
+      <a href="tel:7136894210" class="phone-btn">713-689-4210</a>
+    </div>
+  </nav>
+
+  <section class="hero-section">
+    <h1>Koert Knights DBA Mr Karaoke Houston's Full-Time<br><span class="red-text">Professional Karaoke Host</span></h1>
+    <div class="sub-head">18 Years of Experience • 5–7 Nights Weekly • Limited Availability</div>
+    <div class="btn-group"><button class="primary-btn">Get Started</button><button class="secondary-btn">Book a Consultation</button></div>
+  </section>
+
+  <section class="section-container split-2">
+    <div>
+      <h2 class="section-title">Turn Slow Nights<br>Into <span class="red-text">Packed Nights</span></h2>
+      <p style="color:#a1a1aa; font-size:16px; line-height:1.6;">This isn't just karaoke entertainment — it's an immersive experience designed to keep seats filled and bar registers ringing consistently.</p>
+    </div>
+    <div>
+      <div class="showcase-item"><div class="check-icon">✓</div><div><h4>Brings Consistent Crowds</h4><p>A loyal following of regular singers who support venues weekly.</p></div></div>
+      <div class="showcase-item"><div class="check-icon">✓</div><div><h4>Increases Bar Revenue</h4><p>More customers ordering food and drinks across extended operational loops.</p></div></div>
+    </div>
+  </section>
+
+  <section class="section-container split-2" style="border-top:1px solid #14141f; padding-top:80px;">
+    <div class="panel-card" style="align-self:stretch;">
+      <h3 class="red-text">Live Rotating Gig Calendar</h3>
+      <div id="scheduleGrid" style="display:flex; flex-direction:column; gap:12px; margin-top:20px;"></div>
+    </div>
+    <div class="panel-card" style="align-self:stretch;">
+      <h3 class="red-text">Search Database Catalog</h3>
+      <input type="text" id="songSearchBar" placeholder="Type artist name or performance track title...">
+      <div id="songResultsBody" style="max-height:220px; overflow-y:auto; margin-top:16px;"></div>
+    </div>
+  </section>
+  <section class="section-container">
+    <h2 class="section-title" style="text-align:center;">What Makes This <span class="red-text">Different</span></h2>
+    <div class="grid-3">
+      <div class="panel-card"><h3>Pro Hosting Energy</h3><p>No dead air, no dragging transitions. Every performance flows cleanly with professional stage crowd interaction.</p></div>
+      <div class="panel-card"><h3>Massive Music Index</h3><p>Thousands of crystal clear performance tracks matching every generation and genre seamlessly.</p></div>
+      <div class="panel-card"><h3>Perfect Pace Control</h3><p>Systemized singer rotations ensure absolute structural fairness, maintaining optimal bar crowds from open to close.</p></div>
+    </div>
+  </section>
+
+  <section class="section-container split-2">
+    <div class="media-box"><img src="https://mrkaraokehouston.com" alt="Marketing"></div>
+    <div>
+      <h2 class="section-title">Built-In <span class="red-text">Marketing Power</span></h2>
+      <p style="color:#a1a1aa; font-size:16px; line-height:1.6; margin-bottom:20px;">We don't just hope singers find your venue. Every booking comes backed by systemic promotion campaigns.</p>
+      <div style="margin-bottom:12px;"><span class="red-text">→</span> SMS Text Updates Sent Straight To Active Follower Bases.</div>
+      <div><span class="red-text">→</span> Targeted Social Media Placements Posting Weekly Route Drops.</div>
+    </div>
+  </section>
+
+  <section class="section-container">
+    <h2 class="section-title" style="text-align:center;">Why Bars <span class="red-text">Hire Me</span></h2>
+    <div class="grid-3">
+      <div class="panel-card" style="text-align:center;"><h3>Proven Growth</h3><p>Venues report spikes in overall bar profit margins on our designated hosting nights.</p></div>
+      <div class="panel-card" style="text-align:center;"><h3>Turnkey Launch</h3><p>Complete execution. We bring the gear, run the tracks, and capture the crowd safely.</p></div>
+      <div class="panel-card" style="text-align:center;"><h3>100% Reliable</h3><p>Full-time professional dedication means perfect attendance and flawless coordination loops.</p></div>
+    </div>
+  </section>
+
+  <section class="section-container split-2">
+    <div>
+      <h2 class="section-title">Premium <span class="red-text">Equipment & Experience</span></h2>
+      <p style="color:#a1a1aa; font-size:16px; line-height:1.6; margin-bottom:16px;">We deploy club-tier sound setups, custom vocal tuning, and premium wireless microphone equipment to make every singer sound studio-clean.</p>
+      <p style="color:#a1a1aa; font-size:16px; line-height:1.6;">A mobile computing rig ensures flawless video display transitions and instant, zero-lag song access.</p>
+    </div>
+    <div class="media-box"><img src="https://mrkaraokehouston.com" alt="Gear Rig"></div>
+  </section>
+
+  <section class="section-container" style="text-align:center; background-color:#0f0f17; border:1px solid #1c1c2b; border-radius:24px; padding:60px 40px;">
+    <h2 class="section-title">The Authority In <span class="red-text">Houston Karaoke</span></h2>
+    <p style="color:#a1a1aa; font-size:18px; max-width:700px; margin:0 auto 30px auto; line-height:1.6;">Over 18 years of uninterrupted event execution in the Houston metropolitan area. Trusted by elite venues to deliver pristine weekly interactive entertainment.</p>
+    <div style="font-weight:800; font-size:15px; text-transform:uppercase; letter-spacing:1px;">Licensed • Insured • Fully Bonded</div>
+  </section>
+
+  <section class="section-container" style="text-align:center; margin-bottom:140px;">
+    <h2 class="section-title">Secure the Premium <span class="red-text">Karaoke Experience</span></h2>
+    <div class="panel-card form-console">
+      <label style="text-align:left;">Venue / Business Entity Name</label>
+      <input type="text" id="venueName" placeholder="e.g., Monarch Bar & Lounge">
+      <button type="button" id="submitBtn">Get Started Now</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div>Since 2007 — Licensed and Insured | Houston's Premier Entertainment</div>
+      <div>Terms of Service | Privacy Policy</div>
+    </div>
+  </footer>
+
+  <script>
+    const submitBtn = document.getElementById('submitBtn');
+    const venueInput = document.getElementById('venueName');
+    submitBtn.addEventListener('click', async () => {
+      const v = venueInput.value;
+      if (!v.trim()) return alert("Enter a venue name.");
+      try {
+        const res = await fetch('http://localhost:5000/api/get-started', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ venueName: v })
+        });
+        const out = await res.json(); alert(out.message); venueInput.value = "";
+      } catch (err) { alert("Make sure node server.js is running."); }
+    });
+
+    async function loadLiveSchedule() {
+      try {
+        const res = await fetch('http://localhost:5000/api/schedule');
+        const list = await res.json();
+        document.getElementById('scheduleGrid').innerHTML = list.map(s => `
+          <div style="background:#050508; padding:14px; border-radius:8px; border-left:3px solid #ef4444; display:flex; justify-content:space-between; font-size:14px;">
+            <strong>${s.day}s</strong><span style="color:#a1a1aa;">${s.venue}</span>
+          </div>
+        `).join('');
+      } catch(e) {}
+    }
+
+    const searchBar = document.getElementById('songSearchBar');
+    searchBar.addEventListener('keyup', async () => {
+      try {
+        const res = await fetch(`http://localhost:5000/api/songs?q=${encodeURIComponent(searchBar.value)}`);
+        const songs = await res.json();
+        document.getElementById('songResultsBody').innerHTML = songs.map(s => `
+          <div style="padding:10px 0; border-bottom:1px solid #1c1c2b; display:flex; justify-content:space-between; font-size:14px;">
+            <span style="color:white; font-weight:bold;">${s.title}</span><span style="color:#71717a;">${s.artist}</span>
+          </div>
+        `).join('');
+      } catch(e) {}
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadLiveSchedule();
+      searchBar.dispatchEvent(new Event('keyup'));
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weekly Schedule - Mr. Karaoke Houston Clone</title>
+  <style>
+    body { background-color:#050508; color:#f4f4f5; font-family:system-ui,-apple-system,sans-serif; margin:0; padding:0; }
+    nav { background-color:rgba(5,5,8,0.85); backdrop-filter:blur(12px); border-bottom:1px solid #14141f; position:sticky; top:0; z-index:100; }
+    .nav-container { max-width:1200px; margin:0 auto; padding:20px 24px; display:flex; justify-content:space-between; align-items:center; }
+    .nav-links a { color:#a1a1aa; text-decoration:none; font-size:14px; font-weight:500; margin:0 16px; }
+    .nav-links a:hover { color:#ffffff; }
+    .section-container { max-width:800px; margin:80px auto; padding:0 24px; }
+    .page-title { font-size:36px; font-weight:900; text-transform:uppercase; text-align:center; margin-bottom:40px; }
+    .red-text { color:#ef4444; }
+    .schedule-card { background-color:#0f0f17; border:1px solid #1c1c2b; border-left:4px solid #ef4444; border-radius:12px; padding:24px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; }
+    .venue-name { font-size:18px; font-weight:700; color:#fff; }
+    .show-day { font-size:14px; color:#ef4444; font-weight:800; text-transform:uppercase; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-container">
+      <div style="font-weight:900; font-size:18px; text-transform:uppercase;">Mr. Karaoke <span class="red-text">Houston</span></div>
+      <div class="nav-links"><a href="index.html">Home</a><a href="schedule.html">Schedule</a><a href="songs.html">Song List</a></div>
+    </div>
+  </nav>
+
+  <div class="section-container">
+    <h1 class="page-title">Weekly Gig <span class="red-text">Calendar</span></h1>
+    <div id="scheduleContainer">Loading calendar...</div>
+  </div>
+
+  <script>
+    async function loadSchedule() {
+      try {
+        const res = await fetch('http://localhost:5000/api/schedule');
+        const list = await res.json();
+        const container = document.getElementById('scheduleContainer');
+        
+        if (list.length === 0) {
+          container.innerHTML = "<p style='color:#71717a; text-align:center;'>No shows listed for this week.</p>";
+          return;
+        }
+
+        container.innerHTML = list.map(s => `
+          <div class="schedule-card">
+            <div>
+              <div class="venue-name">${s.venue}</div>
+              <div style="color:#71717a; font-size:13px; margin-top:4px;">Houston, TX</div>
+            </div>
+            <div class="show-day">${s.day}</div>
+          </div>
+        `).join('');
+      } catch(e) {
+        document.getElementById('scheduleContainer').innerHTML = "<p style='color:#ef4444; text-align:center;'>Could not connect to backend server.</p>";
+      }
+    }
+    window.addEventListener('DOMContentLoaded', loadSchedule);
+  </script>
+</body>
+</html>

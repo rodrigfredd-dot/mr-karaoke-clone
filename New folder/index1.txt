@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mr. Karaoke Houston Clone</title>
+  <style>
+    /* Custom styles that work 100% offline */
+    body {
+      background-color: #09090b; /* Deep pitch dark */
+      color: #f4f4f5; /* Light gray text */
+      font-family: system-ui, -apple-system, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+    .hero {
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 600;
+      background-color: rgba(250, 204, 21, 0.1);
+      color: #facc15; /* Yellow gold */
+      border: 1px solid rgba(250, 204, 21, 0.2);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: 42px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin: 0 0 16px 0;
+      line-height: 1.1;
+      color: #ffffff;
+    }
+    .gold-text {
+      color: #facc15;
+    }
+    .dba {
+      color: #52525b;
+      font-size: 24px;
+      font-weight: 500;
+    }
+    p {
+      color: #a1a1aa;
+      font-size: 16px;
+      margin: 0 0 32px 0;
+      font-weight: 500;
+    }
+    .card {
+      background-color: #18181b; /* Card dark gray */
+      border: 1px solid #27272a;
+      padding: 24px;
+      border-radius: 16px;
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: left;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+    }
+    .card h3 {
+      margin: 0 0 16px 0;
+      color: #ffffff;
+      font-size: 18px;
+    }
+    label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #71717a;
+      margin-bottom: 6px;
+      letter-spacing: 1px;
+    }
+    input {
+      width: 100%;
+      padding: 12px;
+      background-color: #09090b;
+      border: 1px solid #27272a;
+      border-radius: 10px;
+      color: #ffffff;
+      font-size: 14px;
+      outline: none;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+    input:focus {
+      border-color: #facc15;
+    }
+    button {
+      width: 100%;
+      padding: 16px;
+      background-color: #facc15;
+      color: #09090b;
+      border: none;
+      border-radius: 10px;
+      font-weight: 900;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      margin-top: 16px;
+      transition: background-color 0.2s;
+    }
+    button:hover {
+      background-color: #eab308;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <!-- Tagline Badge -->
+    <span class="badge">Houston's Premier Entertainment</span>
+
+    <!-- Main Bold Heading -->
+    <h1>
+      Koert Knights <span class="dba">DBA</span><br>
+      <span class="gold-text">Mr. Karaoke Houston</span>
+    </h1>
+
+    <!-- Explainer Subtext -->
+    <p>18 Years of Experience • 5–7 Nights Weekly • Limited Availability</p>
+
+    <!-- Interactive Form -->
+    <div class="card">
+      <h3>Book a Consultation</h3>
+      
+      <label>Venue Name</label>
+      <input type="text" placeholder="e.g., Monarch Bar & Lounge">
+
+      <button type="button">Get Started</button>
+    </div>
+
+    <!-- WEEKLY SHOW SCHEDULE DISPLAY CONTAINER -->
+    <div class="card" style="margin-top: 32px; max-width: 500px;">
+      <h3 style="color: #facc15; border-b: 1px solid #27272a; padding-bottom: 8px;">Weekly Show Schedule</h3>
+      <div id="scheduleGrid" style="display: flex; flex-direction: column; gap: 12px; margin-top: 16px;">
+        <p style="color: #71717a; font-size: 14px; margin: 0;">Loading weekly lineup...</p>
+      </div>
+    </div>
+
+    <!-- THE SEARCHABLE SONG CATALOG ENGINE -->
+    <div class="card" style="margin-top: 32px; max-width: 500px;">
+      <h3>Search Live Song List</h3>
+      <input type="text" id="songSearchBar" placeholder="Type artist or song title..." style="margin-bottom: 16px;">
+      
+      <div style="max-height: 250px; overflow-y: auto;">
+        <table style="width: 100%; border: none; background: transparent;">
+          <tbody id="songResultsBody">
+            <!-- Search queries fall here natively -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+  <!-- JavaScript to handle human interaction -->
+    <!-- JavaScript to send data to our running server -->
+  <script>
+    const getStartedButton = document.querySelector('button');
+    const venueInput = document.querySelector('input');
+
+    getStartedButton.addEventListener('click', async () => {
+      const userTypedValue = venueInput.value;
+
+      if (userTypedValue.trim() === "") {
+        alert("Please type a venue name first!");
+        return;
+      }
+
+      // Pack the user input into a JavaScript Object layout
+      const payloadData = {
+        venueName: userTypedValue
+      };
+
+      try {
+        // Shoot the data package across your network port to your Node server
+        const response = await fetch('http://localhost:5000/api/get-started', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payloadData) // Turn our object package into text strings
+        });
+
+        // Catch the JSON response response message coming back from the server
+        const serverResult = await response.json();
+
+        // Pop up the response text message that our server created for us!
+        alert("Response Received From Server:\n" + serverResult.message);
+        
+        // Clear the text box layout clean
+        venueInput.value = "";
+
+      } catch (error) {
+        alert("Network Error: Could not reach the server. Make sure node server.js is running!");
+      }
+    });
+
+    // A. Query and build the live show schedule grid view
+    async function fetchLiveSchedule() {
+      try {
+        const res = await fetch('http://localhost:5000/api/schedule');
+        const shows = await res.json();
+        const container = document.getElementById('scheduleGrid');
+        
+        container.innerHTML = shows.map(show => `
+          <div style="background: #09090b; padding: 12px; border-radius: 8px; border-left: 4px solid #facc15;">
+            <strong style="color: #ffffff;">${show.day}s:</strong> ${show.venue} 
+            <div style="font-size: 12px; color: #71717a; margin-top: 4px;">${show.time} | ${show.address}</div>
+          </div>
+        `).join('');
+      } catch (err) {
+        document.getElementById('scheduleGrid').innerHTML = "<p style='color:red;'>Could not map itinerary updates.</p>";
+      }
+    }
+
+    // B. Live filtering query engine for keyup inputs inside search bar
+    const searchBar = document.getElementById('songSearchBar');
+    searchBar.addEventListener('keyup', async () => {
+      const currentQuery = searchBar.value;
+      try {
+        const res = await fetch(`http://localhost:5000/api/songs?q=${encodeURIComponent(currentQuery)}`);
+        const matchingSongs = await res.json();
+        const resultsBody = document.getElementById('songResultsBody');
+        
+        resultsBody.innerHTML = matchingSongs.map(song => `
+          <tr>
+            <td style="padding: 8px 0; border-bottom: 1px solid #27272a;">
+              <div style="color: #ffffff; font-weight: bold; font-size:14px;">${song.title}</div>
+              <div style="color: #a1a1aa; font-size: 12px;">${song.artist}</div>
+            </td>
+          </tr>
+        `).join('');
+      } catch (err) {
+        console.error("Song filtering issue:", err);
+      }
+    });
+
+    // Run layout configurations once window elements stabilize
+    window.addEventListener('DOMContentLoaded', () => {
+      fetchLiveSchedule();
+      // Fire an initial empty search query to pre-load baseline target results
+      searchBar.dispatchEvent(new Event('keyup'));
+    });
+
+
+  </script>
+
+
+</body>
+</html>

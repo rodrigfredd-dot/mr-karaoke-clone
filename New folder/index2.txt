@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mr. Karaoke Houston Clone</title>
+  <style>
+    body {
+      background-color: #09090b;
+      color: #f4f4f5;
+      font-family: system-ui, -apple-system, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+    header {
+      text-align: center;
+      padding: 60px 0;
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 700;
+      background-color: rgba(250, 204, 21, 0.1);
+      color: #facc15;
+      border: 1px solid rgba(250, 204, 21, 0.2);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: 48px;
+      font-weight: 900;
+      text-transform: uppercase;
+      margin: 0 0 16px 0;
+      line-height: 1.1;
+      color: #ffffff;
+    }
+    .gold-text { color: #facc15; }
+    .dba { color: #52525b; font-size: 24px; font-weight: 500; }
+    
+    /* SECTION GRID STYLES */
+    .section-title {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin: 60px 0 30px 0;
+      color: #ffffff;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .card {
+      background-color: #18181b;
+      border: 1px solid #27272a;
+      padding: 32px;
+      border-radius: 16px;
+    }
+    .card h3 {
+      margin: 0 0 12px 0;
+      color: #ffffff;
+      font-size: 20px;
+    }
+    .card p {
+      color: #a1a1aa;
+      font-size: 15px;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* FORMS & INTERACTIVES */
+    .form-box {
+      max-width: 450px;
+      margin: 40px auto;
+    }
+    label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #71717a;
+      margin-bottom: 6px;
+      letter-spacing: 1px;
+    }
+    input {
+      width: 100%;
+      padding: 14px;
+      background-color: #09090b;
+      border: 1px solid #27272a;
+      border-radius: 10px;
+      color: #ffffff;
+      font-size: 14px;
+      outline: none;
+      box-sizing: border-box;
+      margin-bottom: 16px;
+    }
+    input:focus { border-color: #facc15; }
+    button {
+      width: 100%;
+      padding: 16px;
+      background-color: #facc15;
+      color: #09090b;
+      border: none;
+      border-radius: 10px;
+      font-weight: 900;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+    }
+    button:hover { background-color: #eab308; }
+
+    footer {
+      text-align: center;
+      border-top: 1px solid #18181b;
+      padding: 40px 0;
+      margin-top: 8px;
+      color: #52525b;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <span class="badge">Houston's Premier Entertainment</span>
+      <h1>
+        Koert Knights <span class="dba">DBA</span><br>
+        <span class="gold-text">Mr. Karaoke Houston</span>
+      </h1>
+      <p style="color: #a1a1aa; font-size: 18px;">18 Years of Experience • 5–7 Nights Weekly • Limited Availability</p>
+    </header>
+
+    <!-- SECTION: FEATURES -->
+    <h2 class="section-title">Turn Slow Nights Into Packed Nights</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Brings Consistent Crowds</h3>
+        <p>A loyal following of singers who show up every single week ready to perform.</p>
+      </div>
+      <div class="card">
+        <h3>Increases Bar Revenue</h3>
+        <p>More customers through the door translates directly to more food and drink sales.</p>
+      </div>
+      <div class="card">
+        <h3>Keeps Customers Longer</h3>
+        <p>An engaged, highly entertained audience stays and spends throughout the night.</p>
+      </div>
+    </div>
+
+    <!-- RECREATED INTERACTIVE MODULES -->
+    <div class="grid-3" style="margin-top: 60px;">
+      <!-- SHOW SCHEDULE MODULE -->
+      <div class="card">
+        <h3 class="gold-text">Weekly Show Lineup</h3>
+        <div id="scheduleGrid" style="display: flex; flex-direction: column; gap: 12px; margin-top: 16px;"></div>
+      </div>
+
+      <!-- SEARCH ENGINE MODULE -->
+      <div class="card">
+        <h3 class="gold-text">Search Song Library</h3>
+        <input type="text" id="songSearchBar" placeholder="Search artist or title..." style="margin-top: 10px;">
+        <div style="max-height: 180px; overflow-y: auto; font-size: 14px;" id="songResultsBody"></div>
+      </div>
+    </div>
+
+    <!-- CENTRAL LEAD CONSOLE -->
+    <div class="card form-box">
+      <h3>Secure Your Venue Slot</h3>
+      <label>Venue Name</label>
+      <input type="text" id="venueName" placeholder="e.g., Monarch Bar & Lounge">
+      <button type="button" id="submitBtn">Get Started</button>
+    </div>
+
+    <footer>
+      <p>Contact: 713-689-4210 | Since 2007 — Licensed and Insured</p>
+      <p>© 2026 Mr. Karaoke Houston Clone. Created for full-stack study optimization.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Bind network interaction endpoints directly
+    const submitBtn = document.getElementById('submitBtn');
+    const venueInput = document.getElementById('venueName');
+
+    submitBtn.addEventListener('click', async () => {
+      const userValue = venueInput.value;
+      if (!userValue.trim()) return alert("Enter a venue name.");
+
+      try {
+        const res = await fetch('http://localhost:5000/api/get-started', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ venueName: userValue })
+        });
+        const outcome = await res.json();
+        alert(outcome.message);
+        venueInput.value = "";
+      } catch (err) {
+        alert("Make sure node server.js is running.");
+      }
+    });
+
+    // Handle show list rendering
+    async function loadSchedule() {
+      try {
+        const res = await fetch('http://localhost:5000/api/schedule');
+        const list = await res.json();
+        document.getElementById('scheduleGrid').innerHTML = list.map(s => `
+          <div style="background:#09090b; padding:10px; border-radius:8px; font-size:14px;">
+            <strong style="color:#fff;">${s.day}:</strong> ${s.venue}
+          </div>
+        `).join('');
+      } catch(e) {}
+    }
+
+    // Live search bindings
+    const searchBar = document.getElementById('songSearchBar');
+    searchBar.addEventListener('keyup', async () => {
+      try {
+        const res = await fetch(`http://localhost:5000/api/songs?q=${encodeURIComponent(searchBar.value)}`);
+        const songs = await res.json();
+        document.getElementById('songResultsBody').innerHTML = songs.map(s => `
+          <div style="padding:6px 0; border-bottom:1px solid #27272a; color:#fff;">
+            <strong>${s.title}</strong> - <span style="color:#a1a1aa;">${s.artist}</span>
+          </div>
+        `).join('');
+      } catch(e) {}
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      loadSchedule();
+      searchBar.dispatchEvent(new Event('keyup'));
+    });
+  </script>
+</body>
+</html>

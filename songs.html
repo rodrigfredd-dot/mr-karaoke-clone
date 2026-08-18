@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Song Catalog - Mr. Karaoke Houston Clone</title>
+  <style>
+    body { background-color:#050508; color:#f4f4f5; font-family:system-ui,-apple-system,sans-serif; margin:0; padding:0; }
+    nav { background-color:rgba(5,5,8,0.85); backdrop-filter:blur(12px); border-bottom:1px solid #14141f; position:sticky; top:0; z-index:100; }
+    .nav-container { max-width:1200px; margin:0 auto; padding:20px 24px; display:flex; justify-content:space-between; align-items:center; }
+    .nav-links a { color:#a1a1aa; text-decoration:none; font-size:14px; font-weight:500; margin:0 16px; }
+    .nav-links a:hover { color:#ffffff; }
+    .section-container { max-width:800px; margin:80px auto; padding:0 24px; }
+    .page-title { font-size:36px; font-weight:900; text-transform:uppercase; text-align:center; margin-bottom:20px; }
+    .red-text { color:#ef4444; }
+    input { width:100%; padding:16px; background-color:#0f0f17; border:1px solid #1c1c2b; border-radius:12px; color:white; box-sizing:border-box; outline:none; font-size:16px; margin-bottom:32px; }
+    input:focus { border-color:#ef4444; }
+    .song-row { padding:14px 16px; border-bottom:1px solid #14141f; display:flex; justify-content:space-between; background-color:#0f0f17; margin-bottom:4px; border-radius:8px; }
+    .song-title { font-weight:bold; color:#fff; }
+    .artist-name { color:#71717a; font-size:14px; }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-container">
+      <div style="font-weight:900; font-size:18px; text-transform:uppercase;">Mr. Karaoke <span class="red-text">Houston</span></div>
+      <div class="nav-links"><a href="index.html">Home</a><a href="schedule.html">Schedule</a><a href="songs.html">Song List</a></div>
+    </div>
+  </nav>
+
+  <div class="section-container">
+    <h1 class="page-title">Search <span class="red-text">Song Library</span></h1>
+    <input type="text" id="catalogSearch" placeholder="Type artist name or song title...">
+    <div id="resultsContainer"></div>
+  </div>
+
+  <script>
+    const searchBar = document.getElementById('catalogSearch');
+    
+    async function searchSongs() {
+      try {
+        const res = await fetch(`http://localhost:5000/api/songs?q=${encodeURIComponent(searchBar.value)}`);
+        const songs = await res.json();
+        const container = document.getElementById('resultsContainer');
+        
+        if (songs.length === 0) {
+          container.innerHTML = "<p style='color:#71717a; text-align:center;'>No matching songs found.</p>";
+          return;
+        }
+
+        container.innerHTML = songs.map(s => `
+          <div class="song-row">
+            <span class="song-title">${s.title}</span>
+            <span class="artist-name">${s.artist}</span>
+          </div>
+        `).join('');
+      } catch(e) {}
+    }
+
+    searchBar.addEventListener('keyup', searchSongs);
+    window.addEventListener('DOMContentLoaded', searchSongs);
+  </script>
+</body>
+</html>
