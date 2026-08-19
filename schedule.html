@@ -8,31 +8,53 @@
     
     body { background-color:#050508; color:#f4f4f5; font-family:system-ui,-apple-system,sans-serif; margin:0; padding:0; box-sizing:border-box; }
     body { 
-  background-image: linear-gradient(to bottom, rgba(5, 5, 8, 0.88), rgba(5, 5, 8, 0.95)), url('https://mrkaraokehouston.com');
-  background-size: cover;
-  background-position: center top;
-  background-attachment: fixed;
-  background-color: #050508; 
-  color: #f4f4f5; 
-  font-family: system-ui, -apple-system, sans-serif; 
-  margin: 0; 
-  padding: 0; 
-  box-sizing: border-box; 
-}
+      background-image: linear-gradient(135deg, rgba(88, 28, 135, 0.45) 0%, rgba(5, 5, 8, 0.85) 60%), url('bg.jpg');
+      background-size: cover;
+      background-position: center top;
+      background-attachment: fixed;
+      background-color: #050508; 
+      color: #f4f4f5; 
+      font-family: system-ui, -apple-system, sans-serif; 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
 
     nav { background-color:rgba(5,5,8,0.85); backdrop-filter:blur(12px); border-bottom:1px solid #14141f; position:sticky; top:0; z-index:100; }
     .nav-container { max-width:1200px; margin:0 auto; padding:20px 24px; display:flex; justify-content:space-between; align-items:center; }
     .nav-links a { color:#a1a1aa; text-decoration:none; font-size:14px; font-weight:500; margin:0 16px; transition:color 0.2s; }
     .nav-links a:hover { color:#ffffff; }
     .phone-btn { background-color:#ef4444; color:#ffffff; padding:10px 22px; border-radius:9999px; text-decoration:none; font-weight:800; font-size:14px; }
-    .schedule-hero { text-align:center; padding:80px 24px 40px 24px; background:radial-gradient(circle at center, rgba(239,68,68,0.05) 0%, transparent 60%); }
+    .schedule-hero { 
+      text-align: center; 
+      padding: 100px 24px 60px 24px; 
+      background: radial-gradient(circle at center, rgba(147, 51, 234, 0.35) 0%, rgba(239, 68, 68, 0.15) 40%, transparent 75%); 
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      position: relative;
+      overflow: hidden;
+    }
+    .schedule-hero::before {
+      content: "MR. KARAOKE";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-5deg);
+      font-size: 140px;
+      font-weight: 900;
+      color: rgba(147, 51, 234, 0.08);
+      white-space: nowrap;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .schedule-hero h1, .schedule-hero p, #scheduleContainer { position: relative; z-index: 2; }
+
     .page-title { font-size:42px; font-weight:900; text-transform:uppercase; margin:0 0 12px 0; letter-spacing:-0.5px; }
     .section-container { max-width:1200px; margin:80px auto; padding:0 24px; }
     .split-2 { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
     .section-title { font-size:32px; font-weight:900; text-transform:uppercase; margin:0 0 24px 0; line-height:1.1; text-align:center; }
     .red-text { color:#ef4444; }
-    .panel-card { background-color:#0f0f17; border:1px solid #1c1c2b; border-radius:16px; padding:32px; }
-    .showcase-item { background-color:#0f0f17; border:1px solid #1c1c2b; border-radius:12px; padding:20px; display:flex; align-items:start; gap:16px; margin-bottom:16px; }
+    .panel-card, .live-show-card { background-color: rgba(15, 15, 23, 0.45); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 16px; }
+    .showcase-item { background-color: rgba(15, 15, 23, 0.45); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
     .check-icon { background-color:rgba(239,68,68,0.1); color:#ef4444; padding:6px 10px; border-radius:6px; font-weight:bold; font-size:14px; }
     #scheduleContainer { max-width:700px; margin:0 auto 40px auto; }
     .live-show-card { background-color:#0f0f17; border:1px solid #1c1c2b; border-left:4px solid #ef4444; border-radius:12px; padding:20px 24px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; }

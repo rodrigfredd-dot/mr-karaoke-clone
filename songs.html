@@ -5,18 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Song Catalog - Mr. Karaoke Houston Clone</title>
   <style>
+    body { 
+      background-image: linear-gradient(135deg, rgba(88, 28, 135, 0.45) 0%, rgba(5, 5, 8, 0.85) 60%), url('bg.jpg');
+      background-size: cover;
+      background-position: center top;
+      background-attachment: fixed;
+      background-color: #050508; 
+      color: #f4f4f5; 
+      font-family: system-ui, -apple-system, sans-serif; 
+      margin: 0; 
+      padding: 0; 
+    }
     body { background-color:#050508; color:#f4f4f5; font-family:system-ui,-apple-system,sans-serif; margin:0; padding:0; }
      nav { background-color: rgba(5, 5, 8, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid #14141f; position: sticky; top: 0; z-index: 100; }
     .nav-container { max-width: 1200px; margin: 0 auto; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; }
     .nav-links a { color: #a1a1aa; text-decoration: none; font-size: 14px; font-weight: 500; margin: 0 16px; transition: color 0.2s; }
     .nav-links a:hover { color: #ffffff; }
     .phone-btn { background-color: #ef4444; color: #ffffff; padding: 10px 22px; border-radius: 9999px; text-decoration: none; font-weight: 800; font-size: 14px; }
-    .section-container { max-width:800px; margin:80px auto; padding:0 24px; }
+    .section-container { 
+      max-width: 800px; 
+      margin: 80px auto; 
+      padding: 60px 24px; 
+      background: radial-gradient(circle at center, rgba(147, 51, 234, 0.35) 0%, rgba(239, 68, 68, 0.15) 40%, transparent 75%); 
+      position: relative;
+    }
     .page-title { font-size:36px; font-weight:900; text-transform:uppercase; text-align:center; margin-bottom:20px; }
     .red-text { color:#ef4444; }
-    input { width:100%; padding:16px; background-color:#0f0f17; border:1px solid #1c1c2b; border-radius:12px; color:white; box-sizing:border-box; outline:none; font-size:16px; margin-bottom:32px; }
+    input { width: 100%; padding: 16px; background-color: rgba(15, 15, 23, 0.65); border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(8px); border-radius: 12px; color: white; box-sizing: border-box; outline: none; font-size: 16px; margin-bottom: 32px; }
     input:focus { border-color:#ef4444; }
-    .song-row { padding:14px 16px; border-bottom:1px solid #14141f; display:flex; justify-content:space-between; background-color:#0f0f17; margin-bottom:4px; border-radius:8px; }
+    .song-row { padding: 14px 16px; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; background-color: rgba(15, 15, 23, 0.45); backdrop-filter: blur(12px); margin-bottom: 4px; border-radius: 8px; }
     .song-title { font-weight:bold; color:#fff; }
     .artist-name { color:#71717a; font-size:14px; }
   </style>
