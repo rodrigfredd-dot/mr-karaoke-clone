@@ -6,10 +6,11 @@
   <title>Weekly Schedule - Mr. Karaoke Houston Clone</title>
   <style>
     body { background-color:#050508; color:#f4f4f5; font-family:system-ui,-apple-system,sans-serif; margin:0; padding:0; }
-    nav { background-color:rgba(5,5,8,0.85); backdrop-filter:blur(12px); border-bottom:1px solid #14141f; position:sticky; top:0; z-index:100; }
-    .nav-container { max-width:1200px; margin:0 auto; padding:20px 24px; display:flex; justify-content:space-between; align-items:center; }
-    .nav-links a { color:#a1a1aa; text-decoration:none; font-size:14px; font-weight:500; margin:0 16px; }
-    .nav-links a:hover { color:#ffffff; }
+    nav { background-color: rgba(5, 5, 8, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid #14141f; position: sticky; top: 0; z-index: 100; }
+    .nav-container { max-width: 1200px; margin: 0 auto; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .nav-links a { color: #a1a1aa; text-decoration: none; font-size: 14px; font-weight: 500; margin: 0 16px; transition: color 0.2s; }
+    .nav-links a:hover { color: #ffffff; }
+    .phone-btn { background-color: #ef4444; color: #ffffff; padding: 10px 22px; border-radius: 9999px; text-decoration: none; font-weight: 800; font-size: 14px; }    
     .section-container { max-width:800px; margin:80px auto; padding:0 24px; }
     .page-title { font-size:36px; font-weight:900; text-transform:uppercase; text-align:center; margin-bottom:40px; }
     .red-text { color:#ef4444; }
@@ -20,12 +21,22 @@
 </head>
 <body>
 
+    <!-- FULLY MATCHED PRO STAGE HEADER MENU NAVIGATION -->
   <nav>
     <div class="nav-container">
-      <div style="font-weight:900; font-size:18px; text-transform:uppercase;">Mr. Karaoke <span class="red-text">Houston</span></div>
-      <div class="nav-links"><a href="index.html">Home</a><a href="schedule.html">Schedule</a><a href="songs.html">Song List</a></div>
+      <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
+        <img src="logo.png" alt="Mr. Karaoke Houston Logo" style="height: 50px; width: auto; object-fit: contain;">
+      </a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="schedule.html">Schedule</a>
+        <a href="songs.html">Song List</a>
+        <a href="index.html#contact-footer">Contact</a>
+      </div>
+      <a href="tel:7136894210" class="phone-btn">713-689-4210</a>
     </div>
   </nav>
+
 
   <div class="section-container">
     <h1 class="page-title">Weekly Gig <span class="red-text">Calendar</span></h1>
