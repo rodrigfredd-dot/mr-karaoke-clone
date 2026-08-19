@@ -5,70 +5,76 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mr. Karaoke Houston Clone</title>
   <style>
-    /* RESET & CORE STYLING GUIDE */
-    body { background-color:#050508; color:#f4f4f5; font-family:system-ui,-apple-system,sans-serif; margin:0; padding:0; box-sizing:border-box; }
-    nav { background-color:rgba(5,5,8,0.85); backdrop-filter:blur(12px); border-bottom:1px solid #14141f; position:sticky; top:0; z-index:100; }
-    .nav-container { max-width:1200px; margin:0 auto; padding:20px 24px; display:flex; justify-content:space-between; align-items:center; }
-    .nav-links a { color:#a1a1aa; text-decoration:none; font-size:14px; font-weight:500; margin:0 16px; }
-    .phone-btn { background-color:#ef4444; color:#fff; padding:10px 22px; border-radius:9999px; text-decoration:none; font-weight:800; font-size:14px; }
-    .hero-section { text-align:center; padding:120px 24px; background:radial-gradient(circle at center, rgba(239,68,68,0.07) 0%, transparent 60%); border-bottom:1px solid #14141f; }
-    .hero-section h1 { font-size:44px; font-weight:900; text-transform:uppercase; line-height:1.15; margin:0 0 20px 0; }
-    .red-text { color:#ef4444; }
-    .sub-head { color:#a1a1aa; font-size:16px; margin-bottom:40px; }
-    .btn-group { display:flex; justify-content:center; gap:16px; }
-    .primary-btn { background-color:#ef4444; color:#fff; padding:16px 32px; border-radius:8px; font-weight:800; border:none; cursor:pointer; text-transform:uppercase; font-size:13px; }
-    .secondary-btn { background-color:transparent; color:#ef4444; padding:16px 32px; border-radius:8px; font-weight:800; border:1px solid #ef4444; cursor:pointer; text-transform:uppercase; font-size:13px; }
+    /* RESET & PREMIUM CROWD BACKGROUND DESIGN SYSTEM */
+    body { 
+      background-image: linear-gradient(to bottom, rgba(5, 5, 8, 0.88), rgba(5, 5, 8, 0.95)), url('https://mrkaraokehouston.com');
+      background-size: cover;
+      background-position: center top;
+      background-attachment: fixed;
+      background-color: #050508; 
+      color: #f4f4f5; 
+      font-family: system-ui, -apple-system, sans-serif; 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+    nav { background-color: rgba(5, 5, 8, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(20, 20, 31, 0.5); position: sticky; top: 0; z-index: 100; }
+    .nav-container { max-width: 1200px; margin: 0 auto; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .nav-links a { color: #a1a1aa; text-decoration: none; font-size: 14px; font-weight: 500; margin: 0 16px; }
+    .phone-btn { background-color: #ef4444; color: #fff; padding: 10px 22px; border-radius: 9999px; text-decoration: none; font-weight: 800; font-size: 14px; }
     
-    /* SYSTEM HOUSING GRIDS */
-    .section-container { max-width:1200px; margin:100px auto; padding:0 24px; }
-    .split-2 { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
-    .grid-3 { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:24px; margin-top:40px; }
-    .section-title { font-size:36px; font-weight:900; text-transform:uppercase; margin:0 0 24px 0; line-height:1.1; }
-    .panel-card { background-color:#0f0f17; border:1px solid #1c1c2b; border-radius:16px; padding:32px; }
-    .showcase-item { background-color:#0f0f17; border:1px solid #1c1c2b; border-radius:12px; padding:20px; display:flex; align-items:start; gap:16px; margin-bottom:16px; }
-    .check-icon { background-color:rgba(239,68,68,0.1); color:#ef4444; padding:6px 10px; border-radius:6px; font-weight:bold; font-size:14px; }
-    .media-box { border-radius:16px; overflow:hidden; border:1px solid #1c1c2b; display:flex; }
-    .media-box img { width:100%; height:auto; object-fit:cover; }
-    .form-console { max-width:500px; margin:60px auto 0 auto; }
-    label { display:block; font-size:11px; font-weight:700; text-transform:uppercase; color:#52525b; margin-bottom:6px; }
-    input { width:100%; padding:14px; background-color:#050508; border:1px solid #1c1c2b; border-radius:8px; color:#fff; margin-bottom:20px; box-sizing:border-box; outline:none; }
-    footer { border-top:1px solid #14141f; padding:50px 24px; background-color:#030305; margin-top:120px; }
-    .footer-inner { max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; color:#52525b; font-size:13px; }
-    @media (max-width:768px) { .split-2 { grid-template-columns:1fr; gap:40px; } }
+    /* HERO CONTAINER WITH RADIAL GLOW */
+    .hero-section { text-align: center; padding: 140px 24px; background: radial-gradient(circle at center, rgba(239, 68, 68, 0.12) 0%, transparent 65%); border-bottom: 1px solid rgba(20, 20, 31, 0.5); }
+    .hero-section h1 { font-size: 54px; font-weight: 900; text-transform: uppercase; line-height: 1.15; margin: 0 0 24px 0; letter-spacing: -0.5px; }
+    .red-text { color: #ef4444; }
+    .sub-head { color: #e4e4e7; font-size: 18px; margin-bottom: 40px; font-weight: 500; }
+    .btn-group { display: flex; justify-content: center; gap: 16px; }
+    
+    .primary-btn { background-color: #ef4444; color: #fff; padding: 16px 32px; border-radius: 8px; font-weight: 800; border: none; cursor: pointer; text-transform: uppercase; font-size: 13px; }
+    .secondary-btn { background-color: transparent; color: #ef4444; padding: 16px 32px; border-radius: 8px; font-weight: 800; border: 1px solid #ef4444; cursor: pointer; text-transform: uppercase; font-size: 13px; }
+    
+    /* SECTION WRAPPERS */
+    .section-container { max-width: 1200px; margin: 100px auto; padding: 0 24px; }
+    .split-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 40px; }
+    .section-title { font-size: 38px; font-weight: 900; text-transform: uppercase; margin: 0 0 16px 0; line-height: 1.1; }
+    
+    /* SEMI-TRANSPARENT GLASS PANEL CARDS */
+    .panel-card { background-color: rgba(15, 15, 23, 0.75); backdrop-filter: blur(8px); border: 1px solid rgba(28, 28, 43, 0.6); border-radius: 16px; padding: 32px; }
+    .showcase-item { background-color: rgba(15, 15, 23, 0.75); backdrop-filter: blur(8px); border: 1px solid rgba(28, 28, 43, 0.6); border-radius: 12px; padding: 20px; display: flex; align-items: start; gap: 16px; margin-bottom: 16px; }
+    .check-icon { background-color: rgba(239, 68, 68, 0.15); color: #ef4444; padding: 6px 10px; border-radius: 6px; font-weight: bold; font-size: 14px; }
+    .media-box { border-radius: 16px; overflow: hidden; border: 1px solid #1c1c2b; display: flex; }
+    .media-box img { width: 100%; height: auto; object-fit: cover; }
+    .form-console { max-width: 500px; margin: 60px auto 0 auto; }
+    label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; color: #a1a1aa; margin-bottom: 6px; }
+    input { width: 100%; padding: 14px; background-color: rgba(5, 5, 8, 0.8); border: 1px solid #1c1c2b; border-radius: 8px; color: #fff; margin-bottom: 20px; box-sizing: border-box; outline: none; }
+    footer { border-top: 1px solid #14141f; padding: 60px 24px; background-color: #030305; margin-top: 120px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left; }
+    @media (max-width: 768px) { .split-2 { grid-template-columns: 1fr; gap: 40px; } }
   </style>
 </head>
 <body>
 
-  <!-- STICKY TOP NAV BAR -->
-    <!-- UPDATED NAV BAR WITH OFFICIAL MICROPHONE LOGO GRAPHIC -->
   <nav>
     <div class="nav-container">
       <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
         <img src="logo.png" alt="Mr. Karaoke Houston Logo" style="height: 50px; width: auto; object-fit: contain;">
       </a>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="schedule.html">Schedule</a>
-        <a href="songs.html">Song List</a>
-        <a href="contact.html">Contact</a>
-      </div>
+      <div class="nav-links"><a href="index.html">Home</a><a href="schedule.html">Schedule</a><a href="songs.html">Song List</a><a href="contact.html">Contact</a></div>
       <a href="tel:7136894210" class="phone-btn">713-689-4210</a>
     </div>
   </nav>
 
-
-  <!-- INTRO HERO BLOCK -->
   <section class="hero-section">
     <h1>Koert Knights DBA Mr Karaoke Houston's Full-Time<br><span class="red-text">Professional Karaoke Host</span></h1>
     <div class="sub-head">18 Years of Experience • 5–7 Nights Weekly • Limited Availability</div>
     <div class="btn-group"><button class="primary-btn">Get Started</button><button class="secondary-btn">Book a Consultation</button></div>
   </section>
 
-  <!-- SECTION 1: TURN SLOW NIGHTS INTO PACKED NIGHTS -->
   <section class="section-container split-2">
     <div>
       <h2 class="section-title">Turn Slow Nights<br>Into <span class="red-text">Packed Nights</span></h2>
-      <p style="color:#a1a1aa; font-size:16px; line-height:1.6;">This isn't just karaoke entertainment — it's an immersive experience designed to keep seats filled and bar registers ringing consistently.</p>
+      <p style="color:#e4e4e7; font-size:16px; line-height:1.6;">This isn't just karaoke entertainment — it's an immersive experience designed to keep seats filled and bar registers ringing consistently.</p>
     </div>
     <div>
       <div class="showcase-item"><div class="check-icon">✓</div><div><h4 style="margin:0 0 4px 0;">Brings Consistent Crowds</h4><p style="margin:0; color:#a1a1aa; font-size:14px;">A loyal following of regular singers who support venues weekly.</p></div></div>
@@ -76,6 +82,7 @@
       <div class="showcase-item"><div class="check-icon">✓</div><div><h4 style="margin:0 0 4px 0;">Keeps Customers Longer</h4><p style="margin:0; color:#a1a1aa; font-size:14px;">Engaged guests stay and spend all night.</p></div></div>
     </div>
   </section>
+
 
   <!-- SECTION 2: CALENDAR & LIVE SEARCH PANELS -->
   

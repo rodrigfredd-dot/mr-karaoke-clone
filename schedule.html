@@ -5,27 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Weekly Schedule - Mr. Karaoke Houston Clone</title>
   <style>
-    body { background-color:#050508; color:#f4f4f5; font-family:system-ui,-apple-system,sans-serif; margin:0; padding:0; }
-    nav { background-color: rgba(5, 5, 8, 0.85); backdrop-filter: blur(12px); border-bottom: 1px solid #14141f; position: sticky; top: 0; z-index: 100; }
-    .nav-container { max-width: 1200px; margin: 0 auto; padding: 20px 24px; display: flex; justify-content: space-between; align-items: center; }
-    .nav-links a { color: #a1a1aa; text-decoration: none; font-size: 14px; font-weight: 500; margin: 0 16px; transition: color 0.2s; }
-    .nav-links a:hover { color: #ffffff; }
-    .phone-btn { background-color: #ef4444; color: #ffffff; padding: 10px 22px; border-radius: 9999px; text-decoration: none; font-weight: 800; font-size: 14px; }    
-    .section-container { max-width:800px; margin:80px auto; padding:0 24px; }
-    .page-title { font-size:36px; font-weight:900; text-transform:uppercase; text-align:center; margin-bottom:40px; }
+    
+    body { background-color:#050508; color:#f4f4f5; font-family:system-ui,-apple-system,sans-serif; margin:0; padding:0; box-sizing:border-box; }
+    body { 
+  background-image: linear-gradient(to bottom, rgba(5, 5, 8, 0.88), rgba(5, 5, 8, 0.95)), url('https://mrkaraokehouston.com');
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  background-color: #050508; 
+  color: #f4f4f5; 
+  font-family: system-ui, -apple-system, sans-serif; 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+
+    nav { background-color:rgba(5,5,8,0.85); backdrop-filter:blur(12px); border-bottom:1px solid #14141f; position:sticky; top:0; z-index:100; }
+    .nav-container { max-width:1200px; margin:0 auto; padding:20px 24px; display:flex; justify-content:space-between; align-items:center; }
+    .nav-links a { color:#a1a1aa; text-decoration:none; font-size:14px; font-weight:500; margin:0 16px; transition:color 0.2s; }
+    .nav-links a:hover { color:#ffffff; }
+    .phone-btn { background-color:#ef4444; color:#ffffff; padding:10px 22px; border-radius:9999px; text-decoration:none; font-weight:800; font-size:14px; }
+    .schedule-hero { text-align:center; padding:80px 24px 40px 24px; background:radial-gradient(circle at center, rgba(239,68,68,0.05) 0%, transparent 60%); }
+    .page-title { font-size:42px; font-weight:900; text-transform:uppercase; margin:0 0 12px 0; letter-spacing:-0.5px; }
+    .section-container { max-width:1200px; margin:80px auto; padding:0 24px; }
+    .split-2 { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+    .section-title { font-size:32px; font-weight:900; text-transform:uppercase; margin:0 0 24px 0; line-height:1.1; text-align:center; }
     .red-text { color:#ef4444; }
-    .schedule-card { background-color:#0f0f17; border:1px solid #1c1c2b; border-left:4px solid #ef4444; border-radius:12px; padding:24px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; }
-    .venue-name { font-size:18px; font-weight:700; color:#fff; }
-    .show-day { font-size:14px; color:#ef4444; font-weight:800; text-transform:uppercase; }
+    .panel-card { background-color:#0f0f17; border:1px solid #1c1c2b; border-radius:16px; padding:32px; }
+    .showcase-item { background-color:#0f0f17; border:1px solid #1c1c2b; border-radius:12px; padding:20px; display:flex; align-items:start; gap:16px; margin-bottom:16px; }
+    .check-icon { background-color:rgba(239,68,68,0.1); color:#ef4444; padding:6px 10px; border-radius:6px; font-weight:bold; font-size:14px; }
+    #scheduleContainer { max-width:700px; margin:0 auto 40px auto; }
+    .live-show-card { background-color:#0f0f17; border:1px solid #1c1c2b; border-left:4px solid #ef4444; border-radius:12px; padding:20px 24px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; }
+    .venue-title { font-size:18px; font-weight:700; color:#ffffff; }
+    .show-time { font-size:14px; color:#ef4444; font-weight:800; text-transform:uppercase; }
+    footer { border-top:1px solid #14141f; padding:60px 24px; background-color:#030305; margin-top:100px; }
+    .footer-inner { max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:40px; text-align:left; }
+    @media (max-width:768px) { .split-2 { grid-template-columns:1fr; gap:40px; } }
   </style>
 </head>
 <body>
 
-    <!-- FULLY MATCHED PRO STAGE HEADER MENU NAVIGATION -->
   <nav>
     <div class="nav-container">
-      <a href="index.html" style="display: flex; align-items: center; text-decoration: none;">
-        <img src="logo.png" alt="Mr. Karaoke Houston Logo" style="height: 50px; width: auto; object-fit: contain;">
+      <a href="index.html" style="display:flex; align-items:center; text-decoration:none;">
+        <img src="logo.png" alt="Mr. Karaoke Houston Logo" style="height:50px; width:auto; object-fit:contain;">
       </a>
       <div class="nav-links">
         <a href="index.html">Home</a>
@@ -37,38 +60,106 @@
     </div>
   </nav>
 
-
-  <div class="section-container">
+  <div class="schedule-hero">
     <h1 class="page-title">Weekly Gig <span class="red-text">Calendar</span></h1>
-    <div id="scheduleContainer">Loading calendar...</div>
+    <p style="color:#a1a1aa; font-size:16px; margin-bottom:40px;">Live performance updates fed straight from our database infrastructure</p>
+    <div id="scheduleContainer">Loading active calendar data streams...</div>
   </div>
 
+  <section class="section-container split-2" style="border-top:1px solid #14141f; padding-top:80px;">
+    <div>
+      <h2 class="section-title" style="text-align:left;">Turn Slow Nights<br>Into <span class="red-text">Packed Nights</span></h2>
+      <p style="color:#a1a1aa; font-size:16px; line-height:1.6;">This isn't just karaoke entertainment — it's an immersive experience designed to keep seats filled and bar registers ringing consistently.</p>
+    </div>
+    <div>
+      <div class="showcase-item"><div class="check-icon">✓</div><div><h4 style="margin:0 0 4px 0;">Brings Consistent Crowds</h4><p style="margin:0; color:#a1a1aa; font-size:14px;">A loyal following of regular singers who support venues weekly.</p></div></div>
+      <div class="showcase-item"><div class="check-icon">✓</div><div><h4 style="margin:0 0 4px 0;">Increases Bar Revenue</h4><p style="margin:0; color:#a1a1aa; font-size:14px;">More customers ordering food and drinks across extended operational loops.</p></div></div>
+      <div class="showcase-item"><div class="check-icon">✓</div><div><h4 style="margin:0 0 4px 0;">Keeps Customers Longer</h4><p style="margin:0; color:#a1a1aa; font-size:14px;">Engaged guests stay and spend all night.</p></div></div>
+    </div>
+  </section>
+  <section class="section-container" style="border-top:1px solid #14141f; padding-top:80px; text-align:center;">
+    <h2 class="section-title">The <span class="red-text">Authority</span> in Houston Karaoke</h2>
+    <p style="color:#a1a1aa; font-size:16px; margin-top:-12px; margin-bottom:60px;">No karaoke act in this town has a bigger following.</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:32px; max-width:1000px; margin:0 auto;">
+      <div style="display:flex; flex-direction:column; align-items:center;"><span style="font-size:48px; font-weight:900; color:#ef4444; line-height:1;">18+</span><span style="font-size:14px; color:#a1a1aa; margin-top:12px;">Years Experience</span></div>
+      <div style="display:flex; flex-direction:column; align-items:center;"><span style="font-size:48px; font-weight:900; color:#ef4444; line-height:1;">7/7</span><span style="font-size:14px; color:#a1a1aa; margin-top:12px;">Counter Nights Per Week</span></div>
+      <div style="display:flex; flex-direction:column; align-items:center;"><span style="font-size:48px; font-weight:900; color:#ef4444; line-height:1;">1,000s</span><span style="font-size:14px; color:#a1a1aa; margin-top:12px;">Loyal Singers</span></div>
+      <div style="display:flex; flex-direction:column; align-items:center;"><span style="font-size:48px; font-weight:900; color:#ef4444; line-height:1;">#1</span><span style="font-size:14px; color:#a1a1aa; margin-top:12px;">Following in Houston</span></div>
+    </div>
+  </section>
+
+  <section class="section-container" style="border-top:1px solid #14141f; padding-top:80px; text-align:center;">
+    <h2 class="section-title">Marketing <span class="red-text">Power</span></h2>
+    <p style="color:#a1a1aa; font-size:16px; margin-top:-16px; margin-bottom:40px;">Promotion is a major advantage. Every week, thousands of singers are actively marketed to.</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px; margin-bottom:16px;">
+      <div class="panel-card" style="padding:16px; display:flex; align-items:center; gap:12px;"><div style="color:#ef4444;">✉️</div><span style="font-size:14px; font-weight:600;">Email Campaigns</span></div>
+      <div class="panel-card" style="padding:16px; display:flex; align-items:center; gap:12px;"><div style="color:#ef4444;">💬</div><span style="font-size:14px; font-weight:600;">Text Marketing</span></div>
+      <div class="panel-card" style="padding:16px; display:flex; align-items:center; gap:12px;"><div style="color:#ef4444;">📱</div><span style="font-size:14px; font-weight:600;">Social Media (FB, IG, TikTok)</span></div>
+      <div class="panel-card" style="padding:16px; display:flex; align-items:center; gap:12px;"><div style="color:#ef4444;">📄</div><span style="font-size:14px; font-weight:600;">Flyers & In-House Promotion</span></div>
+    </div>
+    <div style="display:flex; justify-content:center;">
+      <div class="panel-card" style="padding:16px; display:flex; align-items:center; gap:12px; width:100%; max-width:280px;"><div style="color:#ef4444;">🗣️</div><span style="font-size:14px; font-weight:600;">Word-of-Mouth Network</span></div>
+    </div>
+  </section>
+
+  <section class="section-container" style="border-top:1px solid #14141f; padding-top:80px; text-align:center; max-width:800px;">
+    <h2 class="section-title">Why Bars <span class="red-text">Hire Me</span></h2>
+    <p style="color:#a1a1aa; font-size:16px; margin-top:-16px; margin-bottom:32px;">One venue per night — limited availability.</p>
+    <div style="display:flex; flex-direction:column; gap:12px; text-align:left;">
+      <div class="panel-card" style="padding:16px 24px; display:flex; align-items:center; gap:16px; border-radius:12px;"><span style="color:#ef4444;">🔴</span><span style="font-size:16px; font-weight:600;">Increases repeat customers</span></div>
+      <div class="panel-card" style="padding:16px 24px; display:flex; align-items:center; gap:16px; border-radius:12px;"><span style="color:#ef4444;">🔴</span><span style="font-size:16px; font-weight:600;">Brings new traffic to your venue</span></div>
+      <div class="panel-card" style="padding:16px 24px; display:flex; align-items:center; gap:16px; border-radius:12px;"><span style="color:#ef4444;">🔴</span><span style="font-size:16px; font-weight:600;">Professional and reliable — every time</span></div>
+      <div class="panel-card" style="padding:16px 24px; display:flex; align-items:center; gap:16px; border-radius:12px;"><span style="color:#ef4444;">🔴</span><span style="font-size:16px; font-weight:600;">Clean setup and breakdown</span></div>
+      <div class="panel-card" style="padding:16px 24px; display:flex; align-items:center; gap:16px; border-radius:12px;"><span style="color:#ef4444;">🔴</span><span style="font-size:16px; font-weight:600;">Long-term partnership mindset</span></div>
+    </div>
+  </section>
+
+  <section class="section-container" style="border-top:1px solid #14141f; padding-top:80px; text-align:center;">
+    <h2 class="section-title">Equipment & <span class="red-text">Experience</span></h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:16px; margin-top:32px;">
+      <div class="panel-card" style="padding:24px 16px; display:flex; flex-direction:column; align-items:center; justify-content:center; border-radius:12px; min-height:140px;"><div style="width:32px; height:32px; background-color:#ef4444; border-radius:8px; margin-bottom:16px; display:flex; align-items:center; justify-content:center;">🔊</div><span style="font-size:13px; font-weight:600; line-height:1.4;">Professional-grade sound system</span></div>
+      <div class="panel-card" style="padding:24px 16px; display:flex; flex-direction:column; align-items:center; justify-content:center; border-radius:12px; min-height:140px;"><div style="width:32px; height:32px; background-color:#ef4444; border-radius:8px; margin-bottom:16px; display:flex; align-items:center; justify-content:center;">🎙️</div><span style="font-size:13px; font-weight:600; line-height:1.4;">High-quality wireless microphones</span></div>
+      <div class="panel-card" style="padding:24px 16px; display:flex; flex-direction:column; align-items:center; justify-content:center; border-radius:12px; min-height:140px;"><div style="width:32px; height:32px; background-color:#ef4444; border-radius:8px; margin-bottom:16px; display:flex; align-items:center; justify-content:center;">🎶</div><span style="font-size:13px; font-weight:600; line-height:1.4;">Large song library — all genres & eras</span></div>
+      <div class="panel-card" style="padding:24px 16px; display:flex; flex-direction:column; align-items:center; justify-content:center; border-radius:12px; min-height:140px;"><div style="width:32px; height:32px; background-color:#ef4444; border-radius:8px; margin-bottom:16px; display:flex; align-items:center; justify-content:center;">🔄</div><span style="font-size:13px; font-weight:600; line-height:1.4;">Organized singer rotation</span></div>
+      <div class="panel-card" style="padding:24px 16px; display:flex; flex-direction:column; align-items:center; justify-content:center; border-radius:12px; min-height:140px;"><div style="width:32px; height:32px; background-color:#ef4444; border-radius:8px; margin-bottom:16px; display:flex; align-items:center; justify-content:center;">⚡</div><span style="font-size:13px; font-weight:600; line-height:1.4;">High-energy hosting</span></div>
+    </div>
+  </section>
+
+  <footer id="contact-footer">
+    <div class="footer-inner">
+      <div>
+        <h3 style="color:#ef4444; font-size:16px; margin:0 0 16px 0; font-weight:800; text-transform:uppercase;">Follow Me</h3>
+        <div style="display:flex; gap:14px; font-size:18px; color:#a1a1aa;"><span>📘</span> <span>📸</span> <span>🎵</span> <span>💬</span></div>
+      </div>
+      <div>
+        <h3 style="color:#ef4444; font-size:16px; margin:0 0 16px 0; font-weight:800; text-transform:uppercase;">Contact</h3>
+        <div style="font-size:13px; color:#a1a1aa; line-height:1.6;">📞 713-689-4210 Call or Text<br>✉️ mrkaraokehouston@gmail.com</div>
+      </div>
+      <div style="font-size:12px; color:#71717a; line-height:1.6;">Since 2007 — Licensed and Insured<br>Houston's Premier Karaoke Entertainment Layout<br>© 2026 Mr. Karaoke Houston Clone. All rights reserved.</div>
+    </div>
+  </footer>
+
   <script>
-    async function loadSchedule() {
+    async function loadDatabaseSchedule() {
       try {
         const res = await fetch('http://localhost:5000/api/schedule');
         const list = await res.json();
         const container = document.getElementById('scheduleContainer');
-        
         if (list.length === 0) {
-          container.innerHTML = "<p style='color:#71717a; text-align:center;'>No shows listed for this week.</p>";
+          container.innerHTML = "<p style='color:#71717a; text-align:center; font-size:14px;'>No shows listed for this week.</p>";
           return;
         }
-
         container.innerHTML = list.map(s => `
-          <div class="schedule-card">
-            <div>
-              <div class="venue-name">${s.venue}</div>
-              <div style="color:#71717a; font-size:13px; margin-top:4px;">Houston, TX</div>
-            </div>
-            <div class="show-day">${s.day}</div>
+          <div class="live-show-card">
+            <div><div class="venue-title">${s.venue}</div><div style="color:#71717a; font-size:13px; margin-top:4px;">Houston, TX</div></div>
+            <div class="show-time">${s.day}s</div>
           </div>
         `).join('');
       } catch(e) {
-        document.getElementById('scheduleContainer').innerHTML = "<p style='color:#ef4444; text-align:center;'>Could not connect to backend server.</p>";
+        container.innerHTML = "<p style='color:#ef4444; text-align:center; font-size:14px;'>Could not connect to backend data streams. Is node server.js running?</p>";
       }
     }
-    window.addEventListener('DOMContentLoaded', loadSchedule);
+    window.addEventListener('DOMContentLoaded', loadDatabaseSchedule);
   </script>
 </body>
 </html>
